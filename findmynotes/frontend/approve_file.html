@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="container-fluid py-3 h-100">
+        <div class="row mh-100">
+            <div class="col-12 py-3">
+                <h3>Bootstrap 4 Tabs with Grid</h3>
+            </div>
+            <div class="col-12 mh-100">
+                <!-- tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="nav-item"><a href="#pdf" aria-controls="pdf" role="tab" data-toggle="tab" class="nav-link active">PDF</a>
+                    </li>
+                    <li role="presentation" class="nav-item"><a href="#images" aria-controls="images" role="tab" data-toggle="tab" class="nav-link">Images</a>
+                    </li>
+                    <li role="presentation" class="nav-item"><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab" class="nav-link">Videos</a>
+                    </li>
+                </ul>
+                <div class="tab-content mh-100">
+                    <div role="tabpanel" class="tab-pane active py-3" id="pdf">
+                        <div class="row flex-row flex-nowrap">
+                            {%for pdf in uploaded_pdfs%}
+                            <div>
+                                <a href="/files/{{pdf.file_url}}" >
+                                    {{pdf.file_name}}
+                                </a>
+                            </div><br>
+                            {%endfor%}
+                        </div>                               
+                    </div>
+                    <div role="tabpanel" class="tab-pane py-3 mh-100" id="images">
+                        <div class="row flex-row flex-nowrap">
+                            {%for image in uploaded_images%}
+                            <a target="_blank"  href="/files/{{user_unique_id}}/{{video.file_type}}/{{video.file_name}}" >
+                                <div>
+                                   <form method="post">{% csrf_token %}
+                            <a href="/files/{{user_unique_id}}/{{image.file_type}}/{{image.file_name}}">
+                                <img src="/files/{{image.file_url}}" width="100px" />
+                            </a>
+                        </div>
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="is_appropriate" value="True">
+                                <label class="form-check-label" for="male">Approve</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="is_appropriate" value="False">
+                                <label class="form-check-label" for="female">reject</label>
+                              </div>
+                            <input type="Submit" />
+                            </div>
+                        </form>
+                    </div>
+                        </a>
+                            {%endfor%}
+                        </div> 
+                    </div>
+                    <div role="tabpanel" class="tab-pane py-3 mh-100" id="videos">
+                        {%for video in uploaded_videos%}
+                            <a target="_blank"  href="/files/{{user_unique_id}}/{{video.file_type}}/{{video.file_name}}" >
+                         <div>
+                            <form method="post">{% csrf_token %}
+                                <video width="320" height="240" onmouseover="this.play()" onmouseout="this.pause()">
+                                    <source src="/files/{{video.file_url}}" type="video/mp4">
+                                </video>
+                                <input type="hidden" value="{{user_unique_id}}" name="unique_id"/>
+                                <input type="hidden" value="{{video.file_url}}" name="file_url"/>
+                            </div>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="is_appropriate" value="True">
+                                    <label class="form-check-label" for="male">Approve</label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="is_appropriate"  value="False">
+                                    <label class="form-check-label" for="female">reject</label>
+                                  </div>
+                                <input type="Submit" />
+                                </div>
+                            </form>
+                        </div>
+                            </a>
+                            {%endfor%}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

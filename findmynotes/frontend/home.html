@@ -1,0 +1,123 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeingStudent</title>
+    
+    <link rel="shortcut icon" href="{% static 'images/index/being student.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'CSS/general.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/home.css' %}">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+ {% include 'header.html' %}
+    <svg class="bg-svg svg1" viewBox="0 0 1000 200" xmlns="http://www.w3.org/2000/svg">
+
+        <path fill="#F2F4F8" d="M43.9,-39.2C55.8,-20.1,63.7,-1.9,59.2,11.9C54.8,25.7,38.1,35,20,45.2C1.8,55.4,-17.7,66.3,-33.9,61.8C-50.1,57.3,-62.9,37.3,-67.5,15.8C-72.1,-5.7,-68.5,-28.7,-55.9,-48C-43.3,-67.3,-21.6,-82.9,-2.8,-80.6C16,-78.4,32,-58.3,43.9,-39.2Z" transform="translate(200 100)" />
+    </svg>
+
+    <div class="search-div">
+
+        <div class="search-box">
+            
+                <div>
+                    <div class="logo boldText">
+                        <span>BeingStudent</span>
+                        
+                    </div>
+                </div>
+
+
+            <form action="" class="searchbox-form" method="post">
+                {% csrf_token %}
+                <div class="search-books">
+                    <input placeholder="search notes..." class="search-book-input" name="searchnote" type="text">
+                    <button type="submit" class="search-bttn">Search</button>
+                </div>
+            </form>
+
+            
+            <div class="random-qotes-cover">
+                <div class="random-quotes text-center" id="randomQuotes">
+                    <div class="quote-text-flex">    
+                        <div class="quote-text"></div>
+                    </div>
+                    <div class="quote-author"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="svg-kidstudy-grid">
+            <div>
+                <svg class="studykid-svg-bg" id="sw-js-blob-svg" viewBox="0 0 120 80" version="1.1">
+                    <defs> 
+                        <linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0">
+                            <stop id="stop1" stop-color="rgba(248, 117, 55, 1)" offset="0%"></stop>
+                            <stop id="stop2" stop-color="rgba(251, 168, 31, 1)" offset="100%"></stop>
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#sw-gradient)" d="M24.6,-14.4C30.2,-4.6,31.7,7.3,26.9,15.8C22.1,24.3,11.1,29.4,-1.5,30.3C-14.1,31.1,-28.2,27.8,-34.3,18.5C-40.3,9.3,-38.4,-5.9,-31.3,-16.5C-24.3,-27.2,-12.1,-33.3,-1.3,-32.5C9.6,-31.8,19.1,-24.2,24.6,-14.4Z" 
+                    width="100%" height="100%" transform="translate(75 40)" stroke-width="0" style="transition: all 0.3s ease 0s;">
+                    </path>
+                    <image class="studying-kid-img" href="{% static 'images/studykid.png' %}" height="70" transform="translate(35 0)"/>
+                </svg>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="Monthly-ranking-text text-center font-big">Monthly Top Ranking</div>
+
+    <div class="card-box-centre">
+        <div class="top-ranking-students">
+            <div class="card">
+                <!-- <div class="crown-image-div">
+                    <img src="/images/crown.png" alt="">
+                </div> -->
+                <div class="top-color"><div class="rank-details">Rank 2</div></div>
+                <div class="student-name">John Doe</div>
+                <div class="ranker-branch-name">Information Technology</div>
+                <div class="cardsubtext">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</div>
+                <div class="view-profile-ranker">View Profile</div>
+            </div>
+
+            <div class="card rank-1">
+                <!-- <div class="crown-image-div">
+                    <img src="/images/crown.png" alt="">
+                </div> -->
+                <div class="top-color"><div class="rank-details">Rank 1</div></div>
+
+                <div class="student-name">John Doe</div>
+                <div class="ranker-branch-name">Information Technology</div>
+                <div class="cardsubtext">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</div>
+                <div class="view-profile-ranker">View Profile</div>
+            </div>
+
+            <div class="card">
+                <!-- <div class="crown-image-div">
+                    <img src="/images/crown.png" alt="">
+                </div> -->
+                <div class="top-color"><div class="rank-details">Rank 3</div></div>
+
+                <div class="student-name">John Doe</div>
+                <div class="ranker-branch-name">Information Technology</div>
+                <div class="cardsubtext">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</div>
+                <div class="view-profile-ranker">View Profile</div>
+            </div>
+
+        </div>
+    </div> 
+
+<br>
+
+</body>
+<script src="{% static './JS/randomapi.js' %}"></script>
+</html>

@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'CSS/feed.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .pad-top{
+            padding: 65px 0 0 0 ;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="container-fluid pad-top">
+        <div class="row mh-100">
+            <div class="col-12 mh-100">
+                <!-- tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="nav-item"><a href="#pdf" aria-controls="pdf" role="tab" data-toggle="tab" class="nav-link active">PDF</a>
+                    </li>
+                    <li role="presentation" class="nav-item"><a href="#images" aria-controls="images" role="tab" data-toggle="tab" class="nav-link">Images</a>
+                    </li>
+                    <li role="presentation" class="nav-item"><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab" class="nav-link">Videos</a>
+                    </li>
+                </ul>
+                <div class="tab-content mh-100">
+                    <div role="tabpanel" class="tab-pane active py-3" id="pdf">
+                        <div class="container">
+                            {%for pdf in uploaded_pdfs%}
+                            <div>
+                                <a href="/files/{{user_unique_id}}/{{pdf.file_type}}/{{pdf.file_name}}" >
+                                   <i class="fa fa-file-pdf-o"> {{pdf.file_name}}</i>
+                                </a>
+                            </div><br>
+                            {%endfor%}
+                        </div>                               
+                    </div>
+                    <div role="tabpanel" class="tab-pane py-3 mh-100" id="images">
+                        <div class="row flex-row flex-nowrap">
+                            {%for image in uploaded_images%}
+                            <div class="container">
+                                <div class="card" style="width: 18rem;">
+                                 <img class="card-img-top card-img-size" src="/files/{{image.file_url}}" alt="Card image cap">
+                                 <div class="card-body text-center">
+                                   <a href="/files/{{image.file_url}}" class="btn btn-primary" >View</a>
+                                   <a href="/files/{{image.file_url}}" class="btn btn-primary" Download>Download</a>
+                                 </div>
+                               </div>
+                             </div>
+                            {%endfor%}
+                        </div> 
+                    </div>
+                    <div role="tabpanel" class="tab-pane py-3 mh-100" id="videos">
+                        {%for video in uploaded_videos%}
+                        <div class="container">
+                            <div class="card" style="width: 18rem;">
+                                <video class="card-video" onmouseover="this.play()" onmouseout="this.pause()">
+                                    <source src="/files/{{user_unique_id}}/{{video.file_type}}/{{video.file_name}}" type="video/mp4">
+                                </video>
+                             <div class="card-body text-center">
+                               <a href="/files/{{video.file_url}}" class="btn btn-primary" >View</a>
+                               <a href="/files/{{video.file_url}}" class="btn btn-primary" Download>Download</a>
+                             </div>
+                           </div>
+                         </div>
+                            {%endfor%}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

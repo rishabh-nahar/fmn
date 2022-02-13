@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'CSS/upload_page.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+.upload-form-div{
+    padding: 65px 0 0 0 ;
+    display: grid;
+    width: 100vw;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+}
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="container upload-form-div">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="file_data" class="file-data" 
+                accept=".pdf,.mp4,.MKV,.WEBM,.jpg,.jpeg,.png,.jfif" 
+            /><br><br>
+            <input type="text" name="category" class="file-cat  form-control"  placeholder="category"/>
+            <input type="hidden" name="file_type" class="file-type " /><br>
+            <input type="submit" class="btn btn-primary" />
+        </form>
+        <script>
+            document.querySelector(".file-data").addEventListener('change',getFileType)
+            function getFileType(){
+                fileName = document.querySelector('.file-data').value;
+                extension = fileName.substring(fileName.lastIndexOf('.') + 1);
+                let FileType;
+                if(extension == 'jpg' || extension == "png" || extension == "jpeg" || extension == "jfif"){
+                    FileType = "image"
+                }
+                if(extension == "pdf"){
+                    FileType = "pdf"
+                }
+                if(extension == "mp4" || extension == "MKV" || extension == "WEBM"){
+                    FileType = "video"
+                }
+                document.querySelector('.file-type').value = FileType;
+            }
+        </script>
+    </div>
+</body>
+</html>

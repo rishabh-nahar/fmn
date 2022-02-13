@@ -1,0 +1,97 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'CSS/search.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .search-box{
+            padding: 65px 0 0 0 ;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .search-box input[type=text]{
+            height: 40px;
+        }
+        .grid-display{
+            display: flex;
+        }
+        .card-img-size{
+            height: 300px;
+        }
+        .card-video{
+            z-index: 3;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="search-box">
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search here..." value="{{search_obj }}"  name="searchnote">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-secondary" type="button">Search</button>
+                </div>
+              </div>
+        </form>
+    </div>
+    <diiv>
+        {% if search_obj_pdf.count > 0 %}
+        <h2 class="text-center">PDF</h1>
+        {%endif%}
+        {% for pdf in search_obj_pdf %}
+           <div class="container">
+               <a href="/files/{{pdf.file_url}}" >{{pdf.file_name}}</a>
+            </div><br>
+        {% endfor %}
+
+        {% if search_obj_image.count > 0 %}
+
+        <h2 class="text-center">Image</h1>
+        {%endif%}
+        <div class="grid-display container">
+            {% for image in search_obj_image %}
+           <div>
+               <div class="card" style="width: 18rem;">
+                <img class="card-img-top card-img-size" src="/files/{{image.file_url}}" alt="Card image cap">
+                <div class="card-body text-center">
+                  <a href="/files/{{image.file_url}}" class="btn btn-primary" >View</a>
+                  <a href="/files/{{image.file_url}}" class="btn btn-primary" Download>Download</a>
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+        </div>
+
+        {% if search_obj_video.count > 0 %}
+
+        <h2 class="text-center">Video</h1>
+        
+        {%endif%}
+        <div class="grid-display container">
+            {% for video in search_obj_video %}
+                <div>
+                <div class="card" style="width: 20rem;">
+                    <video class="card-video" onmouseover="this.play()" onmouseout="this.pause()">
+                        <source src="/files/{{user_unique_id}}/{{video.file_type}}/{{video.file_name}}" type="video/mp4">
+                    </video>
+                 <div class="card-body text-center">
+                   <a href="/files/{{video.file_url}}" class="btn btn-primary" >View</a>
+                   <a href="/files/{{video.file_url}}" class="btn btn-primary" Download>Download</a>
+                 </div>
+               </div>
+             </div>
+        {% endfor %}
+        </div>
+
+    </diiv>
+</body>
+</html>

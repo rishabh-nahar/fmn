@@ -1,0 +1,205 @@
+:root {
+    --blue: #1e90ff;
+    --white: #ffffff;
+    --black: #000000;
+    ---orange:#f44d12;
+    --light-dark-blue:#546677;
+    --darkblue: #0b2f52;
+    --grey:#F2F4F8;
+    --sizeText: 22px;
+
+    --font1:Inconsolata;
+    --font2:Mochiy Pop P One;
+    --font3:Righteous;
+    --font4:lobster;
+    --font5:Pacifico;
+    --font6:Patrick Hand;
+  }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+html , body{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+/*After nav -> searchbar & svg*/
+.search-div{
+    display: grid;
+    grid-template-columns: 50% auto;
+    align-items: center;
+    
+    background: url("../SVG/greywave.svg");
+    background-repeat: no-repeat;
+    background-position:bottom;
+    height: 100vh;
+}
+
+.search-div .kid-backg{
+    text-align: center;
+}
+.svg-kidstudy-grid{
+  padding: 10% 10%;
+}
+
+
+.search-div .search-box{
+    padding: 0 0 0 5%;
+    width: 100%;
+}
+.search-box .boldText, .search-box .boldText  *{
+    font-size: 50px;
+    padding: 0 0 5% 0;
+    /* font-family: Mochiy Pop P One; */
+    color: var(--blue)
+}
+ #logo-N, #logo-B{
+    color: var(---orange);
+}
+.search-box .search-bttn{
+    background-color: var(---orange);
+    border: transparent;
+    height: 6vh;
+    width: 20%;
+    color: white;
+    padding: 0 2%;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    cursor: pointer;
+}
+.search-books{
+    display: flex;
+    width: 100%;
+}
+.search-books .search-book-input{
+    width: 70%;
+    height: 6vh;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border: none;
+    outline: none;
+    background: #f0f0f0;
+}
+.search-books .search-book-input[placeholder]{
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0 0 0 2%;
+}
+
+/* Light grey svg for background*/
+.bg-svg{
+    position: absolute; z-index: -1
+}
+/*Random quote section*/
+.random-qotes-cover{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 30vh;
+}
+.random-quotes{
+    border-radius: 5px;
+    padding: 0 2px 0 0;
+
+}
+.quote-text-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.random-quotes .quote-text{
+    text-align: left;
+    font-size: 25px;
+    font-family: var(--font3);
+    color: var(--black);
+}
+.random-quotes .quote-author{
+    text-align: right;
+    font-size: 15px;
+    padding: 0 5%;
+    color: var(--light-dark-blue);
+    font-family: var(--font3);
+}
+/*Rank 1 student*/
+.Monthly-ranking-text{
+    color: var(--darkblue);
+    padding: 3%;
+}
+.card-box-centre{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+.top-ranking-students{
+    width: 95%;
+    display: grid;
+    grid-template-columns: auto auto  auto;
+    justify-content: center;
+    align-items:center;
+    gap: 1%;
+    padding: 0 2%;
+}
+.top-ranking-students .card{
+    text-align: center;
+    background: url("../SVG/svgdesiign.svg");
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 6px 4px rgba(0,0,0,0.11);
+    -moz-box-shadow: 0px 0px 6px 4px rgba(0,0,0,0.11);
+    box-shadow: 0px 0px 6px 4px rgba(0,0,0,0.11);
+}
+.card .top-color{
+    background: var(---orange);
+    color: white;
+    padding: 10px 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.card .student-name{
+    padding: 15px 0;
+    font-family: var(--font2);
+}
+.card .view-profile-ranker{
+    background-color: var(---orange);
+    color: var(--white);
+    padding: 15px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.card .cardsubtext{
+    padding: 15px 5px 15px 5px;
+}
+/*When screen size becomes less*/
+@media only screen and (max-width: 600px) {
+        .svg1{
+            display: none;
+        }
+        
+        /*Search box*/
+        .search-div{
+            grid-template-columns: auto;
+            height: 95vh;
+        }
+        .search-div .search-box{
+            display: grid;
+            grid-template-columns: auto;
+        }
+        .svg-kidstudy-grid{
+            display: none;
+        }
+
+        /*monthly ranking cards*/
+        .top-ranking-students{
+            grid-template-columns: auto;
+            justify-items: center;
+            align-items: center;
+            width: 100vw;
+        }
+  }

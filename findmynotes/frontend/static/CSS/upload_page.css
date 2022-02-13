@@ -1,0 +1,8 @@
+.upload-form-div{
+    padding: 65px 0 0 0 ;
+    display: grid;
+    width: 100vw;
+    height: 99vh;
+    justify-content: center;
+    align-items: center;
+}
